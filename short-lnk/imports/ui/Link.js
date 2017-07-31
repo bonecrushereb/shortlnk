@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 
-export default class Link extends React.Component {
+export class Link extends React.Component {
   onLogout() {
     this.props.history.push('/');
   }
