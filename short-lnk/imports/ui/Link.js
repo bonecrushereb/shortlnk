@@ -1,10 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Accounts } from 'meteor/accounts-base';
 
 
 export class Link extends React.Component {
   onLogout() {
-    this.props.history.push('/');
+    Accounts.logout();
   }
   render() {
     return (
