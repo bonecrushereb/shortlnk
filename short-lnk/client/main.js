@@ -12,15 +12,44 @@ import Login from '../imports/ui/Login';
 
 const unauthenticatedPages = ['/', '/signup'];
 const authenticatedPages = ['/links'];
-
 const history = createBrowserHistory();
+
+const onEnterPublicPage = () => {
+  if (Meteor.userId()) {
+    history.push('/links');
+  }
+};
+
+const onEnterPrivatePage = () => {
+  if (!Meteor.userId()) {
+    history.push('/');
+  }
+};
 
 const routes = (
   <Router history={history}>
     <Switch>
-      <Route exact path="/" component={Login}/>
-      <Route exact path="/signup" component={Signup}/>
-      <Route exact path="/links" component={Link}/>
+      <Route exact path="/" render={() => (
+          Meteor.userId() ? (
+            <Redirect to="/links"/>
+          ) : (
+            <Login />
+          )
+        )}/>
+      <Route exact path="/signup" render={() => (
+          Meteor.userId() ? (
+            <Redirect to="/links"/>
+          ) : (
+            <Signup />
+          )
+        )}/>
+      <Route exact path="/links" render={() => (
+          !Meteor.userId() ? (
+            <Redirect to="/login"/>
+          ) : (
+            <Link />
+          )
+        )}/>
       <Route component={NotFound}/>
     </Switch>
 </Router>
