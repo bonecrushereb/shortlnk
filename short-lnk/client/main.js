@@ -1,9 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router as Router, Switch, Route } from 'react-router-dom';
+import { Router as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { Tracker } from 'meteor/tracker';
-import createBrowserHistory from 'history/createBrowserHistory'
+import createBrowserHistory from 'history/createBrowserHistory';
 
 import Signup from '../imports/ui/Signup';
 import Link from '../imports/ui/Link';
@@ -13,18 +13,6 @@ import Login from '../imports/ui/Login';
 const unauthenticatedPages = ['/', '/signup'];
 const authenticatedPages = ['/links'];
 const history = createBrowserHistory();
-
-const onEnterPublicPage = () => {
-  if (Meteor.userId()) {
-    history.push('/links');
-  }
-};
-
-const onEnterPrivatePage = () => {
-  if (!Meteor.userId()) {
-    history.push('/');
-  }
-};
 
 const routes = (
   <Router history={history}>
@@ -45,7 +33,7 @@ const routes = (
         )}/>
       <Route exact path="/links" render={() => (
           !Meteor.userId() ? (
-            <Redirect to="/login"/>
+            <Redirect to="/"/>
           ) : (
             <Link />
           )

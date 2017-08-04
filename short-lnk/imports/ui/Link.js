@@ -6,8 +6,6 @@ import { Accounts } from 'meteor/accounts-base';
 export class Link extends React.Component {
   onLogout() {
     Accounts.logout();
-
-    this.props.history.push('/');
   }
   render() {
     return (
