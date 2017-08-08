@@ -14,25 +14,25 @@ const history = createBrowserHistory();
 export const routes = (
   <Router history={history}>
     <Switch>
-      <Route exact path="/" render={() => (
+      <Route exact path="/" render={props => (
           Meteor.userId() ? (
             <Redirect to="/links"/>
           ) : (
-            <Login />
+            <Login {...props} />
           )
         )}/>
-      <Route exact path="/signup" render={() => (
+      <Route exact path="/signup" render={props => (
           Meteor.userId() ? (
             <Redirect to="/links"/>
           ) : (
-            <Signup />
+            <Signup {...props} />
           )
         )}/>
-      <Route exact path="/links" render={() => (
+      <Route exact path="/links" render={props => (
           !Meteor.userId() ? (
             <Redirect to="/"/>
           ) : (
-            <Link />
+            <Link {...props}/>
           )
         )}/>
       <Route component={NotFound}/>
