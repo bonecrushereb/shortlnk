@@ -8,6 +8,7 @@ import LinksList from './LinksList';
 export class Link extends React.Component {
   onLogout() {
     Accounts.logout();
+    this.props.history.push('/');
   }
   onSubmit(e) {
     e.preventDefault();
