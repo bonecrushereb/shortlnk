@@ -2,6 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker'
 import { Links } from '../api/links';
+import { withRouter } from 'react-router-dom';
 
 export default class LinksList extends React.Component {
   constructor(props){
