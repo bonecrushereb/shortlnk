@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Accounts } from 'meteor/accounts-base'
+import { Accounts } from 'meteor/accounts-base';
+
 export default class signup extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,7 @@ export default class signup extends React.Component {
         this.setState({error: err.reason});
       } else {
         this.setState({error: ''});
+        this.props.history.push('/links');
       }
     });
   }
