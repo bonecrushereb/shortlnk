@@ -1,6 +1,15 @@
-//Font Sizes
+// Colors
+$grey: #dddddd;
+
+// Spacing
+$space: 1.4rem;
+
+// Font Sizes
 $base-font-size: 1.6rem;
 
-//Boxed View
-$boxed-view-overlay-bg: #dddddd;
+// Form Inputs
+$input-border: $grey;
+
+// Boxed View
+$boxed-view-overlay-bg: $grey;
 $boxed-view-bg: white;
